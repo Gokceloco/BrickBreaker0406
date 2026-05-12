@@ -1,9 +1,11 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameDirector : MonoBehaviour
 {
+    public UIManager uiManager;
     public LevelManager levelManager;
     public BrickManager brickManager;
     public BallManager ballManager;
@@ -31,4 +33,9 @@ public class GameDirector : MonoBehaviour
         ballManager.RestartBallManager();
     }
 
+    public void LevelCompleted()
+    {
+        ballManager.DestroyOldBalls();
+        Invoke("RestartLevel", 1);
+    }
 }

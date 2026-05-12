@@ -20,7 +20,7 @@ public class BallManager : MonoBehaviour
         _balls.Add(newBall);
     }
 
-    private void DestroyOldBalls()
+    public void DestroyOldBalls()
     {
         foreach (var b in _balls)
         {

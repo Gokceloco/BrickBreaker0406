@@ -23,11 +23,22 @@ public class Ball : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Brick"))
         {
-            collision.gameObject.SetActive(false);            
+            collision.gameObject.GetComponent<Brick>().GetHit();
         }
         if (collision.gameObject.CompareTag("BottomWall"))
         {
             gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.transform.position.x > transform.position.x + .3f)
+            {
+                _direction = new Vector3(-1f, 1f, 0);
+            }
+            else if (collision.transform.position.x < transform.position.x - .3f)
+            {
+                _direction = new Vector3(1f, 1f, 0);
+            }
         }
     }
 }
