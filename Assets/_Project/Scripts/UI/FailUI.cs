@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class FailUI : MonoBehaviour
 {
     public void Show()
     {

@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class GameDirector : MonoBehaviour
 {
+    public GameState gameState;
+
     public UIManager uiManager;
     public LevelManager levelManager;
     public BrickManager brickManager;
@@ -14,7 +16,8 @@ public class GameDirector : MonoBehaviour
 
     void Start()
     {
-        RestartLevel();
+        gameState = GameState.MainMenu;
+        uiManager.ShowMainMenu();
     }
 
     void Update()
@@ -25,8 +28,9 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-    void RestartLevel()
+    public void RestartLevel()
     {
+        gameState = GameState.GamePlay;
         levelManager.RestartLevelManager();
         brickManager.RestartBrickManager(levelManager.levelNo);
         player.RestartPlayer();
@@ -35,7 +39,22 @@ public class GameDirector : MonoBehaviour
 
     public void LevelCompleted()
     {
+        gameState = GameState.WinUI;
         ballManager.DestroyOldBalls();
-        Invoke("RestartLevel", 1);
+        uiManager.ShowVictoryUI();
     }
+
+    public void LevelFailed()
+    {
+        gameState = GameState.FailUI;
+        uiManager.ShowFailUI();
+    }
+}
+
+public enum GameState
+{ 
+    MainMenu,
+    GamePlay,
+    WinUI,
+    FailUI 
 }
