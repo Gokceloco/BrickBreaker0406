@@ -1,4 +1,3 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,11 +29,16 @@ public class GameDirector : MonoBehaviour
 
     public void RestartLevel()
     {
+        var state = Random.state;
+        Random.InitState(levelManager.levelNo);
+
         gameState = GameState.GamePlay;
         levelManager.RestartLevelManager();
         brickManager.RestartBrickManager(levelManager.levelNo);
         player.RestartPlayer();
         ballManager.RestartBallManager();
+
+        Random.state = state;
     }
 
     public void LevelCompleted()
@@ -48,6 +52,12 @@ public class GameDirector : MonoBehaviour
     {
         gameState = GameState.FailUI;
         uiManager.ShowFailUI();
+    }
+
+    public void LoadNextLevel()
+    {
+        levelManager.levelNo++;
+        RestartLevel();
     }
 }
 

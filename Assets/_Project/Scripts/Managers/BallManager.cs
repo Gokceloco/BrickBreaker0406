@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class BallManager : MonoBehaviour
 {
-    public Ball ballPrefab;
+    public GameDirector gameDirector;
 
+    [SerializeField] private Ball ballPrefab;
     private List<Ball> _balls = new List<Ball>();
 
     public void RestartBallManager()
@@ -27,5 +28,14 @@ public class BallManager : MonoBehaviour
             Destroy(b.gameObject);
         }
         _balls.Clear();
+    }
+
+    public void BallDestroyed(Ball ball)
+    {
+        _balls.Remove(ball);
+        if (_balls.Count <= 0)
+        {
+            gameDirector.LevelFailed();
+        }
     }
 }

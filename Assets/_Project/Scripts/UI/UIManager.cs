@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public void ShowMainMenu()
     {
         mainMenu.Show();
+        winUI.Hide();
+        failUI.Hide();
     }
 
     public void ShowVictoryUI()
@@ -32,10 +34,12 @@ public class UIManager : MonoBehaviour
     public void LoadNextLevelButtonPressed()
     {
         winUI.Hide();
+        gameDirector.LoadNextLevel();
     }
 
     public void RetryButtonPressed()
     {
         failUI.Hide();
+        gameDirector.RestartLevel();
     }
 }

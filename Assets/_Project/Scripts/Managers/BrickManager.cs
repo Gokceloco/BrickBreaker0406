@@ -8,6 +8,8 @@ public class BrickManager : MonoBehaviour
 
     private List<Brick> _bricks = new List<Brick>();
 
+    public List<GameObject> brickSlots;
+
     public void RestartBrickManager(int levelNo)
     {
         DestroyBircks();
@@ -23,10 +25,17 @@ public class BrickManager : MonoBehaviour
     }
     void CreateNewBricks(int levelNo)
     {
+        List<GameObject> availableSlots = new List<GameObject>(brickSlots);
+
         for (int i = 0; i < levelNo; i++)
         {
-            var newBrick = Instantiate(brickPrefab, transform);
-            newBrick.transform.position = new Vector3(i - 2, 2, 0);
+            var newBrick = Instantiate(brickPrefab, transform);            
+
+            var selectedSlot = availableSlots[Random.Range(0, availableSlots.Count)];            
+
+            newBrick.transform.position = selectedSlot.transform.position;
+            availableSlots.Remove(selectedSlot);
+
             newBrick.StartBrick();
             _bricks.Add(newBrick);
         }

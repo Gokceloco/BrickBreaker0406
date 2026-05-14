@@ -27,7 +27,8 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("BottomWall"))
         {
-            gameObject.SetActive(false);
+            GetComponentInParent<BallManager>().BallDestroyed(this);
+            Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
