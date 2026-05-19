@@ -17,7 +17,7 @@ public class BallManager : MonoBehaviour
     private void CreateNewBall()
     {
         var newBall = Instantiate(ballPrefab, transform);
-        newBall.transform.position = Vector3.zero;
+        newBall.transform.position = new Vector3(0,-2,0);
         _balls.Add(newBall);
     }
 

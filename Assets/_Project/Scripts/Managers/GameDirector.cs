@@ -30,7 +30,7 @@ public class GameDirector : MonoBehaviour
     public void RestartLevel()
     {
         var state = Random.state;
-        Random.InitState(levelManager.levelNo);
+        Random.InitState(levelManager.levelNo + 1);
 
         gameState = GameState.GamePlay;
         levelManager.RestartLevelManager();
