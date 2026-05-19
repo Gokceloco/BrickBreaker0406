@@ -5,6 +5,7 @@ public class BallManager : MonoBehaviour
 {
     public GameDirector gameDirector;
     public AudioManager audioManager;
+    public FXManager fxManager;
 
     [SerializeField] private Ball ballPrefab;
     private List<Ball> _balls = new List<Ball>();

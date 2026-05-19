@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    private BallManager _ballManager;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
 
@@ -9,6 +11,7 @@ public class Ball : MonoBehaviour
 
     private void Start()
     {
+        _ballManager = GetComponentInParent<BallManager>();
         _direction = new Vector3(Random.Range(-1f, 1f), 1, 0);
     }
 
@@ -24,11 +27,11 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Brick"))
         {
             collision.gameObject.GetComponent<Brick>().GetHit();
-            GetComponentInParent<BallManager>().audioManager.PlayEnemyHitAS();
+            _ballManager.audioManager.PlayEnemyHitAS();
         }
         if (collision.gameObject.CompareTag("BottomWall"))
         {
-            GetComponentInParent<BallManager>().BallDestroyed(this);
+            _ballManager.BallDestroyed(this);
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
@@ -43,6 +46,9 @@ public class Ball : MonoBehaviour
             }
         }
 
-        GetComponentInParent<BallManager>().audioManager.PlayBallImpactAS();
+        _ballManager.fxManager.PlayBallImpactFX(collision.contacts[0].point,
+            collision.contacts[0].normal);
+
+        _ballManager.audioManager.PlayBallImpactAS();
     }
 }

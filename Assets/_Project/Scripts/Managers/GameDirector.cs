@@ -10,6 +10,7 @@ public class GameDirector : MonoBehaviour
     public LevelManager levelManager;
     public BrickManager brickManager;
     public BallManager ballManager;
+    public AudioManager audioManager;
 
     public Player player;
 
@@ -25,6 +26,15 @@ public class GameDirector : MonoBehaviour
         {
             RestartLevel();
         }
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            LoadNextLevel();
+        }
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            levelManager.levelNo--;
+            RestartLevel();
+        }
     }
 
     public void RestartLevel()
@@ -38,6 +48,9 @@ public class GameDirector : MonoBehaviour
         player.RestartPlayer();
         ballManager.RestartBallManager();
 
+        audioManager.StopMusic();
+        audioManager.StartMusic();
+
         Random.state = state;
     }
 
@@ -46,12 +59,14 @@ public class GameDirector : MonoBehaviour
         gameState = GameState.WinUI;
         ballManager.DestroyOldBalls();
         uiManager.ShowVictoryUI();
+        audioManager.StopMusic();
     }
 
     public void LevelFailed()
     {
         gameState = GameState.FailUI;
         uiManager.ShowFailUI();
+        audioManager.StopMusic();
     }
 
     public void LoadNextLevel()
