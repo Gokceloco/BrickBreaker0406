@@ -24,6 +24,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Brick"))
         {
             collision.gameObject.GetComponent<Brick>().GetHit();
+            GetComponentInParent<BallManager>().audioManager.PlayEnemyHitAS();
         }
         if (collision.gameObject.CompareTag("BottomWall"))
         {
@@ -41,5 +42,7 @@ public class Ball : MonoBehaviour
                 _direction = new Vector3(1f, 1f, 0);
             }
         }
+
+        GetComponentInParent<BallManager>().audioManager.PlayBallImpactAS();
     }
 }

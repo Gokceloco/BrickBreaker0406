@@ -4,6 +4,7 @@ using UnityEngine;
 public class BallManager : MonoBehaviour
 {
     public GameDirector gameDirector;
+    public AudioManager audioManager;
 
     [SerializeField] private Ball ballPrefab;
     private List<Ball> _balls = new List<Ball>();
