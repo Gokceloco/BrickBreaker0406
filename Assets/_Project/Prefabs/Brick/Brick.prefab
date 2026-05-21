@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Brick
   healthTMP: {fileID: 55514867694743231}
   startHealth: 2
+  sr: {fileID: 743205960191876067}
 --- !u!61 &4329535751046628766
 BoxCollider2D:
   m_ObjectHideFlags: 0

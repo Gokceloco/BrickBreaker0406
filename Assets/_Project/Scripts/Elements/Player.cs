@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public GameDirector gameDirector;
+
     [SerializeField] private ControlType controlType;
 
     [SerializeField] private Rigidbody2D rb;
@@ -14,6 +16,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (gameDirector.gameState != GameState.GamePlay)
+        {
+            return;
+        }
         if (controlType == ControlType.Keyboard)
         {
             var dir = Vector2.zero;

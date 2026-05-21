@@ -3950,6 +3950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec393c4b5126754d86016f8334bf73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  gameDirector: {fileID: 2008544583}
   controlType: 1
   rb: {fileID: 1954392719}
   speed: 4
