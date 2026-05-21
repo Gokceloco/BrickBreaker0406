@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfc1bdd2ebf2f44fa14e39d285be86e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  levelNo: 10
+  levelNo: 1
 --- !u!4 &41444020
 Transform:
   m_ObjectHideFlags: 0
@@ -3950,6 +3950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec393c4b5126754d86016f8334bf73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  controlType: 1
   rb: {fileID: 1954392719}
   speed: 4
 --- !u!4 &1954392718
