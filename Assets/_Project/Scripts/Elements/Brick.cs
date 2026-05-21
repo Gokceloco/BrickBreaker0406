@@ -25,7 +25,7 @@ public class Brick : MonoBehaviour
         healthTMP.text = _currentHealth.ToString();
         if (_currentHealth <= 0)
         {
-            DestroyBricks();
+            DestroyBrick();
         }
     }
 
@@ -51,7 +51,7 @@ public class Brick : MonoBehaviour
         healthTMP.DOColor(Color.red, .1f).SetLoops(2, LoopType.Yoyo);
     }
 
-    private void DestroyBricks()
+    private void DestroyBrick()
     {
         GetComponentInParent<BrickManager>().BrickDestroyed(this);
         Destroy(gameObject);

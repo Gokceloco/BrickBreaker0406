@@ -51,4 +51,24 @@ public class Ball : MonoBehaviour
 
         _ballManager.audioManager.PlayBallImpactAS();
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.contacts[0].point.x < transform.position.x && _direction.x < 0)
+        {
+            _direction.x *= -1;
+        }
+        if (collision.contacts[0].point.x > transform.position.x && _direction.x > 0)
+        {
+            _direction.x *= -1;
+        }
+        if (collision.contacts[0].point.y < transform.position.y && _direction.y < 0)
+        {
+            _direction.y *= -1;
+        }
+        if (collision.contacts[0].point.y > transform.position.y && _direction.y > 0)
+        {
+            _direction.y *= -1;
+        }
+    }
 }

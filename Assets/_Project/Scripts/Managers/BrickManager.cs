@@ -27,7 +27,9 @@ public class BrickManager : MonoBehaviour
     {
         List<GameObject> availableSlots = new List<GameObject>(brickSlots);
 
-        for (int i = 0; i < levelNo; i++)
+        var brickCount = Mathf.Clamp(levelNo, 1, 20);
+
+        for (int i = 0; i < brickCount; i++)
         {
             var newBrick = Instantiate(brickPrefab, transform);            
 
@@ -48,5 +50,6 @@ public class BrickManager : MonoBehaviour
         {
             gameDirector.LevelCompleted();
         }
+        gameDirector.fXManager.PlayBrickDestroyedPS(brick.transform.position);
     }
 }

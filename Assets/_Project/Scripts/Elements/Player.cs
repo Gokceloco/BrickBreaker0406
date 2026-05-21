@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
             xPos = Mathf.Clamp(xPos, -2f, 2f);
 
             transform.position = new Vector3(xPos, -4, 0);
+
+            rb.linearVelocity = Vector3.zero;
         }
     }
 }

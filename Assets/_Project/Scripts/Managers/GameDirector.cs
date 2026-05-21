@@ -11,6 +11,7 @@ public class GameDirector : MonoBehaviour
     public BrickManager brickManager;
     public BallManager ballManager;
     public AudioManager audioManager;
+    public FXManager fXManager;
 
     public Player player;
 
@@ -50,6 +51,8 @@ public class GameDirector : MonoBehaviour
 
         audioManager.StopMusic();
         audioManager.StartMusic();
+
+        uiManager.ShowInGameUI(levelManager.levelNo);
 
         Random.state = state;
     }
